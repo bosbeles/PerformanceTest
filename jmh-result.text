@@ -1,0 +1,9 @@
+Benchmark                         Mode  Cnt    Score     Error  Units
+App.loopCachedEnumSet             avgt    3  310,290 ± 156,766  ns/op
+App.loopImmutableCachedEnumSet    avgt    3  314,480 ± 150,834  ns/op
+App.loopOverEnumSet               avgt    3  267,311 ±  12,384  ns/op
+App.loopOverValues                avgt    3  176,843 ±  22,096  ns/op
+App.streamCachedEnumSet           avgt    3  266,615 ±  32,244  ns/op
+App.streamEnumSet                 avgt    3  273,957 ±  10,008  ns/op
+App.streamImmutableCachedEnumSet  avgt    3  260,808 ±  16,228  ns/op
+App.streamValues                  avgt    3  197,480 ±   9,506  ns/op
