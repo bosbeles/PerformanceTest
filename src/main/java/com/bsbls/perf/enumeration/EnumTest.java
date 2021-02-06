@@ -12,18 +12,17 @@ import java.util.concurrent.TimeUnit;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 
-@Fork(value = 1, warmups = 1)
+@Fork(value = 1)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @BenchmarkMode(Mode.AverageTime)
-@Warmup(iterations = 5, time = 1000, timeUnit = MILLISECONDS)
-@Measurement(iterations = 5, time = 1000, timeUnit = MILLISECONDS)
+@Warmup(iterations = 5, time = 2000, timeUnit = MILLISECONDS)
+@Measurement(iterations = 10, time = 2000, timeUnit = MILLISECONDS)
 public class EnumTest {
 
 
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder()
                 .include(EnumTest.class.getSimpleName())
-                .forks(1)
                 .build();
 
         new Runner(opt).run();
