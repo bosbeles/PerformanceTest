@@ -59,33 +59,5 @@ public class EnumTest {
         b.consume(denemeEnum);
     }
 
-    @Benchmark
-    public DenemeEnum fromValue2() {
-        return DenemeEnum.fromValue(5);
-    }
-
-    @Benchmark
-    public DenemeEnum staticValue2() {
-        return DenemeEnum.fromStaticValue(5);
-    }
-
-    @Benchmark
-    public DenemeEnum directValue2() {
-        return DenemeEnum.fromDirectValue(5);
-    }
-
-    @Benchmark
-    public DenemeEnum mapValue2() {
-        return DenemeEnum.fromMapValue(5);
-    }
-
-    @Benchmark
-    public DenemeEnum switchValue2() {
-        return DenemeEnum.fromSwitchValue(5);
-    }
-
-
-
-
 
 }
