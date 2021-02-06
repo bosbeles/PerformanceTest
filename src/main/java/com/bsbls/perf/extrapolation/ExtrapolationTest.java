@@ -31,6 +31,7 @@ public class ExtrapolationTest {
         double lon = 40;
         int course = 30;
         double distance = 1000;
+        double latInRadians = Math.toRadians(lat);
     }
 
     @Benchmark
@@ -52,4 +53,11 @@ public class ExtrapolationTest {
     public Point testSimpleOptimizedArray(Parameters parameters) {
         return Extrapolation.simpleExtrapolationOptimizedArray(parameters.lat, parameters.lon, parameters.course, parameters.distance);
     }
+
+    @Benchmark
+    public Point testSimpleOptimizedTrigonometric(Parameters parameters) {
+        return Extrapolation.simpleExtrapolationOptimizedTrigonometric(parameters.lat, parameters.lon, parameters.course, parameters.distance);
+    }
+
+
 }

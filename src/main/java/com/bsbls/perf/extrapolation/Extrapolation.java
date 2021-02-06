@@ -123,6 +123,15 @@ public class Extrapolation {
         return new Point(eLat, eLon);
     }
 
+    public static Point simpleExtrapolationOptimizedTrigonometric(double lat, double lon, int course, double distance) {
+        double dNorth = distance * TrigonometricUtils.cos(course);
+        double dEast = distance * TrigonometricUtils.sin(course);
+
+        double eLat = lat + dNorth * 180 / Math.PI / 6367449.09;
+        double eLon = lon + dEast * 180 / Math.PI / 6388851.84 / TrigonometricUtils.cos(lat);
+        return new Point(eLat, eLon);
+    }
+
     public static void main(String[] args) {
         Point simple = simpleExtrapolation(30, 40, 30, 1000);
         Point other = extrapolate(30, 40, 30, 1000);
