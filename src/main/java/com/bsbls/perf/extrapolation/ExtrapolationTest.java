@@ -12,8 +12,8 @@ import java.util.concurrent.TimeUnit;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 @Fork(value = 1)
-@OutputTimeUnit(TimeUnit.NANOSECONDS)
-@BenchmarkMode(Mode.AverageTime)
+@OutputTimeUnit(TimeUnit.MICROSECONDS)
+@BenchmarkMode({Mode.AverageTime, Mode.Throughput})
 @Warmup(iterations = 5, time = 2000, timeUnit = MILLISECONDS)
 @Measurement(iterations = 10, time = 2000, timeUnit = MILLISECONDS)
 public class ExtrapolationTest {
