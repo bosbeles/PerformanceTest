@@ -86,10 +86,18 @@ public class Extrapolation {
 
     static Map<Integer, Double> cosMap = new HashMap<>();
     static Map<Integer, Double> sinMap = new HashMap<>();
+    static double[] cosArr = new double[360];
+    static double[] sinArr = new double[360];
+
     static {
         for (int i = 0; i < 359; i++) {
-            cosMap.put(i, Math.cos(Math.toRadians(i)));
-            sinMap.put(i, Math.sin(Math.toRadians(i)));
+            double cos = Math.cos(Math.toRadians(i));
+            double sin = Math.sin(Math.toRadians(i));
+
+            cosMap.put(i, cos);
+            sinMap.put(i, sin);
+            cosArr[i] = cos;
+            sinArr[i] = sin;
         }
     }
 
@@ -106,9 +114,18 @@ public class Extrapolation {
         return new Point(eLat, eLon);
     }
 
+    public static Point simpleExtrapolationOptimizedArray(double lat, double lon, int course, double distance) {
+        double dNorth = distance * cosArr[course];
+        double dEast = distance * sinArr[course];
+
+        double eLat = lat + dNorth * 180 / Math.PI / 6367449.09;
+        double eLon = lon + dEast * 180 / Math.PI / 6388851.84 / Math.cos(Math.toRadians(lat));
+        return new Point(eLat, eLon);
+    }
+
     public static void main(String[] args) {
-        Point simple = simpleExtrapolation(38, 42, 0, 3430);
-        Point other = extrapolate(38, 42, 0, 3430);
+        Point simple = simpleExtrapolation(30, 40, 30, 1000);
+        Point other = extrapolate(30, 40, 30, 1000);
         System.out.println(simple + " " + other);
     }
 }

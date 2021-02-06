@@ -47,4 +47,9 @@ public class ExtrapolationTest {
     public Point testSimpleOptimized(Parameters parameters) {
         return Extrapolation.simpleExtrapolationOptimized(parameters.lat, parameters.lon, parameters.course, parameters.distance);
     }
+
+    @Benchmark
+    public Point testSimpleOptimizedArray(Parameters parameters) {
+        return Extrapolation.simpleExtrapolationOptimizedArray(parameters.lat, parameters.lon, parameters.course, parameters.distance);
+    }
 }
